@@ -25,7 +25,7 @@ const Categories = () => {
                                 <img src={item.image} alt='' className='bg-[#C1F1C6] p-5 rounded-full w-28 h-28'/>
                             </div>
                             <div className='mt-5 space-y-1'>
-                                <h5>{item.title}</h5>
+                                <h5 className="font-bold">{item.title}</h5>
                                 <p>{item.description}</p>
                             </div>
                         </div>
