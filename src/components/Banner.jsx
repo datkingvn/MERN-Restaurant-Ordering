@@ -1,4 +1,5 @@
 import React from 'react';
+import {RiShoppingBasketFill} from "react-icons/ri";
 
 const Banner = () => {
     return (
@@ -49,7 +50,7 @@ const Banner = () => {
                         - Ghé Ngay <span className='text-green'>DatFood</span></h2>
                     <p className='text-xl text-[#4A4A4A]'>Hãy khám phá niềm vui ẩm thực, tạo nên những kỷ niệm đáng nhớ
                         của đôi ta.</p>
-                    <button className='btn bg-green px-8 py-3 font-semibold text-white rounded-full'>Order Ngay</button>
+                    <button className='btn bg-green px-8 py-3 font-semibold text-white rounded-full'>Order Ngay <RiShoppingBasketFill style={{ fontSize: '20px' }}/></button>
                 </div>
 
             </div>
