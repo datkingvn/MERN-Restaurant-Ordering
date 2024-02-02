@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import logo from '/logo.png';
-import {BiPhoneCall} from "react-icons/bi";
+import {FaRegUser} from "react-icons/fa";
+import AuthenticationModal from "./AuthenticationModal.jsx";
 
 const Navbar = () => {
     const [isSticky, setIsSticky] = useState(false);
@@ -70,7 +71,8 @@ const Navbar = () => {
     return (
         <header
             className="max-w-screen-2xl container mx-auto fixed top-0 left-0 right-0 transition-all duration-300 ease-in-out">
-            <div className={`navbar xl:px-24 ${isSticky ? "shadow-md bg-base-100 transition-all duration-300 ease-in-out" : ""}`}>
+            <div
+                className={`navbar xl:px-24 ${isSticky ? "shadow-md bg-base-100 transition-all duration-300 ease-in-out" : ""}`}>
                 <div className="navbar-start">
                     <div className="dropdown">
                         <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -116,11 +118,15 @@ const Navbar = () => {
                         </div>
                     </div>
 
-                    {/* Contact Btn */}
-                    <a className="btn bg-green rounded-full px-6 text-white flex items-center gap-2">
-                        <BiPhoneCall/>
-                        Liên Hệ
-                    </a>
+                    {/* Login */}
+                    <button className="btn bg-green rounded-full px-6 text-white flex items-center gap-2"
+                            onClick={() => document.getElementById('my_modal_5').showModal()}>
+                        <FaRegUser style={{fontSize: "15px"}}/>
+                        Đăng Nhập
+                    </button>
+
+                    {/*Modal*/}
+                    <AuthenticationModal/>
                 </div>
             </div>
         </header>
