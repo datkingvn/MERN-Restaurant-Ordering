@@ -1,15 +1,38 @@
-import React from 'react';
+import React, {useContext, useState} from 'react';
 import {CiLogin} from "react-icons/ci";
-import {Link} from "react-router-dom";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 import {FcGoogle} from "react-icons/fc";
 import {FaArrowLeft, FaBackward, FaFacebook, FaGithub} from "react-icons/fa";
 import {useForm} from "react-hook-form";
 import AuthenticationModal from "./AuthenticationModal.jsx";
+import {AuthContext} from "../contexts/AuthProvider.jsx";
 
 const Signup = () => {
     const {register, handleSubmit, formState: {errors}} = useForm();
 
-    const onSubmit = data => console.log(data);
+    const {createUser, login} = useContext(AuthContext);
+
+    const [errorMessage, setErrorMessage] = useState("")
+
+    // Redirect to Home Page or Specific page
+    const location = useLocation();
+    const navigate = useNavigate();
+    const from = location.state?.from?.pathname || "/"
+
+
+    const onSubmit = data => {
+        const email = data.email;
+        const password = data.password;
+        createUser(email, password).then((result) => {
+            // Signed up
+            const user = result.user;
+            document.getElementById('my_modal_5').close();
+            navigate(from, {replace: true});
+        }).catch((error) => {
+            const errorMessage = error.message;
+            setErrorMessage("Email này đã tồn tại mất rồi :(")
+        });
+    };
     return (
         <div className='max-w-md bg-white shadow w-full mx-auto my-20'>
             <div className="modal-action mt-0 flex flex-col justify-center">
@@ -43,10 +66,12 @@ const Signup = () => {
                     </div>
 
                     {/*Message Error*/}
-
+                    {
+                        errorMessage ? <p className='text-red text-xs italic'><span>Thông báo:</span> {errorMessage}</p> : ""
+                    }
 
                     {/*Button*/}
-                    <div className="form-control mt-6">
+                    <div className="form-control mt-4">
                         <input type='submit' value='Đăng Ký' className="btn bg-green uppercase text-white"></input>
                     </div>
 
@@ -71,8 +96,9 @@ const Signup = () => {
                 </div>
 
                 {/*Close Button*/}
-                <Link to="/" className="flex items-center bg-green-500 hover:bg-green-600 text-green py-2 px-4 rounded-full pb-4 text-sm">
-                    <FaArrowLeft className="mr-2" />
+                <Link to="/"
+                      className="flex items-center bg-green-500 hover:bg-green-600 text-green py-2 px-4 rounded-full pb-4 text-sm">
+                    <FaArrowLeft className="mr-2"/>
                     <span>Quay lại trang chủ</span>
                 </Link>
             </div>

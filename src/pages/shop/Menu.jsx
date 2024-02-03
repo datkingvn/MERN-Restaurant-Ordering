@@ -93,7 +93,7 @@ const Menu = () => {
                         <h2 className='md:text-5xl text-4xl font-bold md:leading-snug leading-snug uppercase'>Thức ăn
                             phong phú
                             - Bùng nổ <span className='text-red'>tình yêu</span></h2>
-                        <p className='text-xl text-[#4A4A4A] text-sm italic'>
+                        <p className='text-[#4A4A4A] text-sm italic'>
                             "Đố ai định nghĩa được từ hôn.<br/>
                             Có khó gì đâu một tâm hồn.<br/>
                             Hai đứa yêu nhau ngồi xích lại.<br/>
