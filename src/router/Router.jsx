@@ -3,7 +3,7 @@ import Main from "../layout/Main.jsx";
 import Home from "../pages/home/Home.jsx";
 import Menu from "../pages/shop/Menu.jsx";
 import Signup from "../components/Signup.jsx";
-import PrivateRouter from "../../PrivateRouter/PrivateRouter.jsx";
+import PrivateRouter from "../PrivateRouter/PrivateRouter.jsx";
 import UpdateProfile from "../pages/UserSettings/UpdateProfile.jsx";
 
 
